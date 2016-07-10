@@ -209,11 +209,10 @@ minetest.register_node("prefab:concrete_fence", {
 })
 
 doors.register_door("prefab:concrete_door", {
-	description = "Prefab Concrete Door",
-	inventory_image = "prefab_concrete_door.png",
+	description = "Concrete Door",
+	inventory_image = "prefab_concrete_door_inv.png",
 	groups = {cracky=2,door=1},
-	tiles_bottom = {"prefab_concrete_door_bottom.png", "prefab_concrete_grey.png"},
-	tiles_top = {"prefab_concrete_door_top.png", "prefab_concrete_grey.png"},
+	tiles = {"prefab_concrete_door.png"},
 	only_placer_can_open = true,
 })
 
