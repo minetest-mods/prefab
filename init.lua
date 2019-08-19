@@ -9,7 +9,7 @@ print("Prefab Loaded!")
 
 local creative = minetest.setting_getbool("creative_mode")
 
-local damage = 30
+local damage = tonumber(minetest.settings:get("prefab.electric_fence_damage")) or 30
 if creative then damage = 0 end
 
 minetest.register_node("prefab:concrete", {
