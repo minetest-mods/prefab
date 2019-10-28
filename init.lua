@@ -7,7 +7,7 @@ dofile(minetest.get_modpath("prefab").."/other.lua")
 print("Prefab Other loaded!")
 print("Prefab Loaded!")
 
-local creative = minetest.setting_getbool("creative_mode")
+local creative = minetest.settings:get_bool("creative_mode")
 
 local damage = tonumber(minetest.settings:get("prefab.electric_fence_damage")) or 30
 if creative then damage = 0 end
