@@ -1,4 +1,13 @@
 minetest.register_craft({
+	output = "prefab:boat",
+	recipe = {
+		{"", "", ""},
+		{"prefab:concrete_slab", "", "prefab:concrete_slab"},
+		{"prefab:concrete_slab", "prefab:concrete_slab", "prefab:concrete_slab"},
+	},
+})
+
+minetest.register_craft({
 	output = 'prefab:concrete 4',
 	recipe = {
 		{'default:stone', 'default:gravel', 'default:stone'},

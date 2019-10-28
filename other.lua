@@ -157,12 +157,3 @@ minetest.register_craftitem("prefab:boat", {
 		return itemstack
 	end,
 })
-
-minetest.register_craft({
-	output = "prefab:boat",
-	recipe = {
-		{"", "", ""},
-		{"prefab:concrete_slab", "", "prefab:concrete_slab"},
-		{"prefab:concrete_slab", "prefab:concrete_slab", "prefab:concrete_slab"},
-	},
-})
