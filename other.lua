@@ -37,7 +37,7 @@ local boat = {
 	visual_size = {x=2.0,y=2.0},
 	mesh = "barge.obj",
 	textures = {"prefab_concrete_boat.png"},
-	
+
 	driver = nil,
 	v = 0,
 }
@@ -56,7 +56,7 @@ function boat:on_rightclick(clicker)
 	end
 end
 
-function boat:on_activate(staticdata, dtime_s)
+function boat:on_activate(staticdata)
 	self.object:set_armor_groups({immortal=1})
 	if staticdata then
 		self.v = tonumber(staticdata)
@@ -64,10 +64,10 @@ function boat:on_activate(staticdata, dtime_s)
 end
 
 function boat:get_staticdata()
-	return tostring(v)
+	return tostring(self.v)
 end
 
-function boat:on_punch(puncher, time_from_last_punch, tool_capabilities, direction)
+function boat:on_punch(puncher)
 	self.object:remove()
 	if puncher and puncher:is_player() then
 		puncher:get_inventory():add_item("main", "prefab:boat")
@@ -101,7 +101,7 @@ function boat:on_step(dtime)
 	if math.abs(self.v) > 4.5 then
 		self.v = 4.5*get_sign(self.v)
 	end
-	
+
 	local p = self.object:get_pos()
 	p.y = p.y-0.5
 	if not is_water(p) then
@@ -143,8 +143,8 @@ minetest.register_craftitem("prefab:boat", {
 	inventory_image = "prefab_boat_inventory.png",
 	wield_scale = {x=2, y=2, z=1},
 	liquids_pointable = true,
-	
-	on_place = function(itemstack, placer, pointed_thing)
+
+	on_place = function(itemstack, _, pointed_thing)
 		if pointed_thing.type ~= "node" then
 			return
 		end
