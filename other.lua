@@ -114,7 +114,7 @@ function boat:on_step(dtime)
 		p.y = p.y+1
 		if is_water(p) then
 			self.object:set_acceleration({x=0, y=3, z=0})
-			local y = self.object:get_elocity().y
+			local y = self.object:get_velocity().y
 			if y > 2 then
 				y = 2
 			end
