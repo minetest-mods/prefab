@@ -22,6 +22,30 @@ minetest.register_node("prefab:concrete", {
 	groups = {cracky=2},
 })
 
+if stairsplus ~= nil then
+
+    stairsplus:register_all("prefab", "concrete", "prefab:concrete", {
+        groups = {
+            not_in_creative_inventory = 1,
+            cracky = 3
+        },
+        tiles = {"prefab_concrete.png"},
+        description = "Block of Prefab Concrete"
+    })
+
+else
+    stairs.register_stair_and_slab("concrete", "prefab:concrete", {
+        cracky = 3
+    }, {"prefab_concrete.png"}, "Block of Prefab Concrete Stair", "Block of Prefab Concrete Slab")
+end
+
+if technic_cnc ~= nil then
+    technic_cnc.register_all("prefab:concrete", {
+        cracky = 2,
+        not_in_creative_inventory = 1
+    }, {"prefab_concrete.png"}, "Block of Prefab Concrete")
+end
+
 minetest.register_node("prefab:concrete_with_grass", {
 	description = "Prefab Concrete with Grass",
 	paramtype = "light",
