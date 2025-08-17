@@ -22,7 +22,7 @@ minetest.register_node("prefab:concrete", {
 	groups = {cracky=2},
 })
 
-if stairsplus ~= nil then
+if core.global_exists("stairsplus") then
 
     stairsplus:register_all("prefab", "concrete", "prefab:concrete", {
         groups = {
@@ -39,7 +39,7 @@ else
     }, {"prefab_concrete.png"}, "Block of Prefab Concrete Stair", "Block of Prefab Concrete Slab")
 end
 
-if technic_cnc ~= nil then
+if core.global_exists("technic_cnc") then
     technic_cnc.register_all("prefab:concrete", {
         cracky = 2,
         not_in_creative_inventory = 1
