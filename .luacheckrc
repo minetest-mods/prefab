@@ -10,5 +10,9 @@ read_globals = {
 
 	-- deps
 	"minetest",
-	"doors"
+	"core",
+	"doors",
+	"stairs",
+	"stairsplus",
+	"technic_cnc"
 }
