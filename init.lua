@@ -13,59 +13,60 @@ local damage = tonumber(minetest.settings:get("prefab.electric_fence_damage")) o
 if creative then damage = 0 end
 
 minetest.register_node("prefab:concrete", {
-        drawtype = "normal",
+	drawtype = "normal",
 	description = "Block of Prefab Concrete",
 	paramtype = "light",
 	tiles = {"prefab_concrete.png"},
 	is_ground_content = false,
-	drop = "prefab:concrete",
 	groups = {cracky=2},
 })
 
 if core.global_exists("stairsplus") then
-
-    stairsplus:register_all("prefab", "concrete", "prefab:concrete", {
-        groups = {
-            not_in_creative_inventory = 1,
-            cracky = 3
-        },
-        tiles = {"prefab_concrete.png"},
-        description = "Block of Prefab Concrete"
-    })
-
+	stairsplus:register_all("prefab", "concrete", "prefab:concrete", {
+		groups = {
+			not_in_creative_inventory = 1,
+			cracky = 3
+		},
+		tiles = {"prefab_concrete.png"},
+		description = "Block of Prefab Concrete"
+	})
 else
-    stairs.register_stair_and_slab("concrete", "prefab:concrete", {
-        cracky = 3
-    }, {"prefab_concrete.png"}, "Block of Prefab Concrete Stair", "Block of Prefab Concrete Slab")
+	stairs.register_stair_and_slab("concrete", "prefab:concrete", {
+		cracky = 3
+	}, {"prefab_concrete.png"}, "Block of Prefab Concrete Stair", "Block of Prefab Concrete Slab")
 end
 
 if core.global_exists("technic_cnc") then
-    technic_cnc.register_all("prefab:concrete", {
-        cracky = 2,
-        not_in_creative_inventory = 1
-    }, {"prefab_concrete.png"}, "Block of Prefab Concrete")
+	technic_cnc.register_all("prefab:concrete", {
+		cracky = 2,
+		not_in_creative_inventory = 1
+	}, {"prefab_concrete.png"}, "Block of Prefab Concrete")
 end
 
 minetest.register_node("prefab:concrete_with_grass", {
 	description = "Prefab Concrete with Grass",
 	paramtype = "light",
-	tiles = {"default_grass.png",
-	                "prefab_concrete.png",
-			"prefab_concrete_grass.png",},
+	tiles = {
+		"default_grass.png",
+		"prefab_concrete.png",
+		"prefab_concrete_grass.png"
+	},
 	is_ground_content = false,
-	drop = "prefab:concrete",
+	drop = "prefab:concrete", -- like dirt with grass
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:concrete_wall", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Wall Section",
-	tiles = {"prefab_concrete.png",
-	                "prefab_concrete.png",
-			"prefab_concrete_wall.png",
-			"prefab_concrete_wall.png",
-			"prefab_concrete_wall.png",
-			"prefab_concrete_wall.png"},
+	drawtype = "nodebox",
+	tiles = {
+		"prefab_concrete.png",
+		"prefab_concrete.png",
+		"prefab_concrete_wall.png",
+		"prefab_concrete_wall.png",
+		"prefab_concrete_wall.png",
+		"prefab_concrete_wall.png"
+	},
 	paramtype = "light",
 	node_box = {
 		type = "fixed",
@@ -75,16 +76,15 @@ minetest.register_node("prefab:concrete_wall", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_wall",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:concrete_stair", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Stair",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
-    paramtype2 = "facedir",
+	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -93,13 +93,12 @@ minetest.register_node("prefab:concrete_stair", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_stair",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:concrete_slab", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Slab",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	node_box = {
@@ -109,13 +108,12 @@ minetest.register_node("prefab:concrete_slab", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_slab",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:concrete_stair_inverted", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Stair (inverted)",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -132,8 +130,8 @@ minetest.register_node("prefab:concrete_stair_inverted", {
 })
 
 minetest.register_node("prefab:concrete_slab_inverted", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Slab (inverted)",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	node_box = {
@@ -148,8 +146,8 @@ minetest.register_node("prefab:concrete_slab_inverted", {
 })
 
 minetest.register_node("prefab:concrete_slit", {
-        drawtype = "nodebox",
 	description = "Prefab Horizontal Concrete Slit",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	node_box = {
@@ -166,19 +164,20 @@ minetest.register_node("prefab:concrete_slit", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_slit",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:concrete_window", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Framed Window",
-	tiles = {"prefab_concrete.png",
-	                "prefab_concrete.png",
-			"prefab_concrete.png",
-			"prefab_concrete.png",
-			"prefab_concrete_window.png",
-			"prefab_concrete_window.png"},
+	drawtype = "nodebox",
+	tiles = {
+		"prefab_concrete.png",
+		"prefab_concrete.png",
+		"prefab_concrete.png",
+		"prefab_concrete.png",
+		"prefab_concrete_window.png",
+		"prefab_concrete_window.png"
+	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
@@ -198,7 +197,6 @@ minetest.register_node("prefab:concrete_window", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_window",
 	groups = {cracky=2},
 })
 
@@ -216,7 +214,6 @@ minetest.register_node("prefab:concrete_ladder", {
 	selection_box = {
 		type = "wallmounted",
 	},
-	drop = "prefab:concrete_ladder",
 	groups = {cracky=2},
 })
 
@@ -230,7 +227,6 @@ minetest.register_node("prefab:concrete_fence", {
 	},
 	tiles = {"prefab_concrete.png"},
 	is_ground_content = false,
-	drop = "prefab:concrete_fence",
 	groups = {cracky=2},
 })
 
@@ -243,8 +239,8 @@ doors.register_door("prefab:concrete_door", {
 })
 
 minetest.register_node("prefab:concrete_cylinder", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Cylinder",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	node_box = {
@@ -263,13 +259,12 @@ minetest.register_node("prefab:concrete_cylinder", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_cylinder",
 	groups = {cracky=2,falling_node=1},
 })
 
 minetest.register_node("prefab:concrete_bollard", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Bollard",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	node_box = {
@@ -291,13 +286,12 @@ minetest.register_node("prefab:concrete_bollard", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_bollard",
 	groups = {cracky=2,falling_node=1},
 })
 
 minetest.register_node("prefab:concrete_bench", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Bench",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -315,13 +309,12 @@ minetest.register_node("prefab:concrete_bench", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_bench",
 	groups = {cracky=2,falling_node=1},
 })
 
 minetest.register_node("prefab:concrete_railing", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Railing",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -333,13 +326,12 @@ minetest.register_node("prefab:concrete_railing", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:concrete_railing",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:concrete_railing_corner", {
-        drawtype = "nodebox",
 	description = "Prefab Concrete Railing Corner",
+	drawtype = "nodebox",
 	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -357,10 +349,10 @@ minetest.register_node("prefab:concrete_railing_corner", {
 })
 
 minetest.register_node("prefab:electric_fence", {
-        drawtype = "nodebox",
 	description = "Electric Fence",
 	tiles = {"prefab_electric_fence.png"},
 	sunlight_propagates = true,
+	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	damage_per_second = damage,
@@ -372,20 +364,21 @@ minetest.register_node("prefab:electric_fence", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:electric_fence",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:electric_fence_corner", {
-        drawtype = "nodebox",
 	description = "Electric Fence Corner",
-	tiles = {"prefab_electric_fence_corner_top.png",
-	                "prefab_electric_fence_corner_top.png",
-			"prefab_electric_fence_corner_side1.png",
-			"prefab_electric_fence_corner_side2.png",
-			"prefab_electric_fence_corner_side1.png",
-			"prefab_electric_fence_corner_side2.png"},
+	tiles = {
+		"prefab_electric_fence_corner_top.png",
+		"prefab_electric_fence_corner_top.png",
+		"prefab_electric_fence_corner_side1.png",
+		"prefab_electric_fence_corner_side2.png",
+		"prefab_electric_fence_corner_side1.png",
+		"prefab_electric_fence_corner_side2.png"
+	},
 	sunlight_propagates = true,
+	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	damage_per_second = damage,
@@ -400,19 +393,20 @@ minetest.register_node("prefab:electric_fence_corner", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:electric_fence_corner",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:electric_fence_end", {
-        drawtype = "nodebox",
 	description = "Electric Fence End",
-	tiles = {"prefab_electric_fence_end1.png",
-	                "prefab_electric_fence_end1.png",
-			"prefab_concrete.png",
-			"prefab_concrete.png",
-			"prefab_electric_fence_end2.png",
-			"prefab_electric_fence_end1.png"},
+	drawtype = "nodebox",
+	tiles = {
+		"prefab_electric_fence_end1.png",
+		"prefab_electric_fence_end1.png",
+		"prefab_concrete.png",
+		"prefab_concrete.png",
+		"prefab_electric_fence_end2.png",
+		"prefab_electric_fence_end1.png"
+	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
@@ -427,16 +421,15 @@ minetest.register_node("prefab:electric_fence_end", {
 		},
 	},
 	is_ground_content = false,
-	drop = "prefab:electric_fence_end",
 	groups = {cracky=2},
 })
 
 minetest.register_node("prefab:concrete_catwalk",{
-	drawtype="nodebox",
-	description= "Prefab Concrete Catwalk",
+	description = "Prefab Concrete Catwalk",
+	drawtype = "nodebox",
+	tiles = {"prefab_concrete.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
-	tiles = { 'prefab_concrete.png', },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -447,6 +440,5 @@ minetest.register_node("prefab:concrete_catwalk",{
 			{-0.500000,0.448454,-0.500000,-0.437500,0.500000,0.500000},
 		},
 	},
-	groups={cracky=2},
-	drop = "prefab:concrete_catwalk",
+	groups = {cracky=2},
 })
